@@ -144,7 +144,7 @@ svg.i{width:1.4em;height:1.4em;fill:none;stroke:currentColor;stroke-width:2;stro
 .payhead{display:flex;align-items:flex-end;gap:16px}
 .payhead .due{margin-left:auto;text-align:right}
 .payhead .due b{display:block;font-family:var(--d);font-size:2.4rem;font-weight:700;color:var(--navy);line-height:1}
-.pcols{display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr;gap:8px;flex:1;min-height:0}
+.pcols{display:grid;grid-template-columns:1fr 34px 1fr;gap:8px;flex:1;min-height:0}
 .or{display:flex;align-items:center;justify-content:center;position:relative}
 .or::before{content:"";position:absolute;top:8%;bottom:8%;left:50%;border-left:2px dashed var(--line)}
 .or i{position:relative;font-style:normal;background:var(--bg);color:var(--muted);font-weight:700;font-size:.78rem;text-transform:uppercase;padding:8px 0}
@@ -255,7 +255,7 @@ const GROUP_MIN=10, GROUP_DISC=.15, OVER=3;
 const LANGS=['pl','en','de','uk'],LN={pl:'Polski',en:'English',de:'Deutsch',uk:'Українська'},LS={pl:'PL',en:'EN',de:'DE',uk:'UA'},LOC={pl:'pl-PL',en:'en-GB',de:'de-DE',uk:'uk-UA'};
 const TX={
  hero:['Bilety<br><span>do Term</span>','Tickets<br><span>to the Spa</span>','Tickets<br><span>für die Therme</span>','Квитки<br><span>до Терм</span>'],
- lead:['Wybierz strefę i czas pobytu, zapłać kartą, BLIK-iem lub gotówką. Bilet z kodem QR otworzy bramkę.','Choose a zone and time, pay by card, BLIK or cash. The QR ticket opens the gate.','Bereich und Dauer wählen, mit Karte, BLIK oder bar zahlen. Das QR-Ticket öffnet das Drehkreuz.','Оберіть зону і час, сплатіть карткою, BLIK або готівкою. QR-квиток відкриє турнікет.'],
+ lead:['Wybierz strefę i czas pobytu, zapłać kartą lub BLIK-iem. Bilet z kodem QR otworzy bramkę.','Choose a zone and time, pay by card or BLIK. The QR ticket opens the gate.','Bereich und Dauer wählen, mit Karte oder BLIK zahlen. Das QR-Ticket öffnet das Drehkreuz.','Оберіть зону і час, сплатіть карткою або BLIK. QR-квиток відкриє турнікет.'],
  touch:['Dotknij, aby kupić bilet','Touch to buy a ticket','Zum Ticketkauf berühren','Торкніться, щоб купити квиток'],
  today:['Dziś otwarte','Open today','Heute geöffnet','Сьогодні відкрито'],
  openNow:['Otwarte – zapraszamy','Open now – welcome','Jetzt geöffnet','Відкрито – ласкаво просимо'],
@@ -283,7 +283,7 @@ const TX={
  sum:['Podsumowanie','Summary','Übersicht','Підсумок'],total:['Razem','Total','Gesamt','Разом'],per:['/ os.','/ pers.','/ Pers.','/ ос.'],
  addPax:['Dodaj co najmniej jedną osobę','Add at least one person','Mindestens eine Person','Додайте хоча б одну особу'],
  back:['Wróć','Back','Zurück','Назад'],cancel:['Anuluj','Cancel','Abbrechen','Скасувати'],next:['Dalej','Continue','Weiter','Далі'],help:['Pomoc','Help','Hilfe','Допомога'],
- payQ:['Jak chcesz zapłacić?','How would you like to pay?','Wie möchten Sie zahlen?','Як ви хочете сплатити?'],payS:['Wybierz jedną z trzech możliwości – każda działa od razu.','Choose one of three options.','Wählen Sie eine von drei Möglichkeiten.','Оберіть один із трьох способів.'],
+ payQ:['Jak chcesz zapłacić?','How would you like to pay?','Wie möchten Sie zahlen?','Як ви хочете сплатити?'],payS:['Płatność bezgotówkowa: kartą, telefonem lub BLIK-iem.','Cashless only: card, phone or BLIK.','Nur bargeldlos: Karte, Handy oder BLIK.','Лише безготівково: картка, телефон або BLIK.'],
  toPay:['Do zapłaty','To pay','Zu zahlen','До сплати'],or:['lub','or','oder','або'],
  card:['Karta lub telefon','Card or phone','Karte oder Handy','Картка або телефон'],cardHow:['Przyłóż kartę, telefon lub zegarek do terminala po prawej stronie kasy.','Hold your card, phone or watch to the terminal on the right.','Karte, Handy oder Uhr an das Terminal rechts halten.','Прикладіть картку до термінала праворуч.'],
  term:['Terminal po prawej stronie','Terminal on the right','Terminal rechts','Термінал праворуч'],
@@ -381,7 +381,7 @@ function machineSVG(part){const hl=x=>part===x||(part==='cash'&&(x==='coin'||x==
  return `<svg class="mach" viewBox="0 0 64 104" aria-hidden="true"><rect x="4" y="2" width="56" height="100" rx="8" fill="#F1F6FB" stroke="#15418A" stroke-width="2.5"/><rect x="10" y="8" width="44" height="30" rx="3" fill="#15418A"/><rect x="38" y="44" width="16" height="12" rx="2" ${hl('reader')}/><rect x="12" y="46" width="18" height="4" rx="2" ${hl('coin')}/><rect x="10" y="60" width="44" height="4" rx="2" ${hl('note')}/><rect x="14" y="78" width="36" height="14" rx="3" ${hl('tray')}/></svg>`}
 const phoneSVG=()=>`<svg class="mach" viewBox="0 0 64 104" aria-hidden="true"><rect x="12" y="6" width="40" height="92" rx="8" fill="#F1F6FB" stroke="#15418A" stroke-width="2.5"/><rect x="17" y="16" width="30" height="66" rx="3" fill="#111"/><text x="32" y="44" text-anchor="middle" fill="#fff" font-family="Poppins,sans-serif" font-weight="800" font-size="10">blik</text><g class="mhl-t"><rect x="19" y="54" width="26" height="10" rx="2" fill="#F5C518"/><text x="32" y="61.5" text-anchor="middle" fill="#111" font-family="monospace" font-weight="600" font-size="6.5">123 456</text></g></svg>`;
 V.pay=()=>{
- const cashOn=S.cashIn>0,left=Math.max(0,r2(total()-S.cashIn));
+ const cashOn=false;
  const ov=S.phase==='wait'?`<div class="overlay"><div class="spin"></div><span class="h1" style="font-size:1.6rem">${S.payBy==='blik'?t('blikConf'):S.payBy==='cash'?t('cashOk'):t('auth')}</span></div>`:'';
  const head=`<div class="payhead"><div><h1 class="h1">${S.blikOpen?'BLIK':t('payQ')}</h1>${S.blikOpen?'':`<p class="sub">${t('payS')}</p>`}</div><div class="due"><span class="lbl">${t('toPay')}</span><b class="num">${money(total())}</b></div></div>`;
  const or=`<span class="or"><i>${t('or')}</i></span>`;
@@ -391,10 +391,7 @@ V.pay=()=>{
  :`<div class="pcols">
    <button class="pcol ${cashOn?'off':''}" data-a="card"><span class="pbig" style="background:var(--navy)">${ic('card')}</span><h3>${t('card')}</h3><span class="how">${t('cardHow')}</span>${machineSVG('reader')}
     <span class="brands"><span>Visa</span><span>Mastercard</span><span>Apple Pay</span><span>Google Pay</span></span><span class="toterm">${t('term')}<span class="arr">${ic('arrow')}${ic('arrow')}${ic('arrow')}</span></span></button>${or}
-   <div class="pcol ${cashOn?'off':''}"><span class="pbig" style="background:#111"><i class="blik">blik</i></span><h3>BLIK</h3><span class="how">${t('blikHow')}</span>${phoneSVG()}<button class="btn btn-navy blikbtn" data-a="blikOpen">${ic('kbd')}${t('blikStart')}</button></div>${or}
-   <button class="pcol" data-a="cash"><span class="pbig" style="background:var(--go)">${ic('cash')}</span><h3>${t('cash')}</h3><span class="how">${t('cashHow')}</span>${machineSVG('cash')}
-    <span class="denoms"><span><b>${t('coins')}</b> 10 gr – 5 zł</span><span><b>${t('notes')}</b> 10 – 200 zł</span></span>
-    <span class="cashbar num"><span>${t('ins')}<b>${money(S.cashIn)}</b></span><span class="left">${t('left')}<b>${money(left)}</b></span></span></button></div>`;
+   <div class="pcol ${cashOn?'off':''}"><span class="pbig" style="background:#111"><i class="blik">blik</i></span><h3>BLIK</h3><span class="how">${t('blikHow')}</span>${phoneSVG()}<button class="btn btn-navy blikbtn" data-a="blikOpen">${ic('kbd')}${t('blikStart')}</button></div></div>`;
  return `<div class="pay">${sumHTML()}<div class="payR">${head}${body}${ov}</div></div>${S.blikOpen||cashOn?'':`<div class="termhint">${ic('card')}<span>${t('term')}</span>${ic('arrow')}</div>`}`;
 };
 V.print=()=>`<div class="print"><div class="slot"><div class="paper"></div></div><div style="height:240px"></div><span class="h1">${t('printing')}</span></div>`;
@@ -406,10 +403,10 @@ function ticketHTML(){const z=zone(),d=new Date();const ds=String(d.getDate()).p
  <div class="zone" style="--c:${z.c}"><i><svg viewBox="0 0 48 48">${z.art}</svg></i><div><b>${t('z'+z.id)}</b><span class="num">${t('h'+S.time)}</span></div></div>
  <div class="kv num"><span>Data</span><span>${ds}</span><span>Wejście od</span><span>${hm(now())}</span><span>Ważny do</span><span>${hm(until(S.time))}</span><span>Osoby</span><span>${persons()}</span>
  ${CATS.filter(c=>S.pax[c.id]).map(c=>`<span>${S.pax[c.id]}× ${TX['c'+c.id][0]}</span><span>${money(S.pax[c.id]*r2(base()*c.m))}</span>`).join('')}
- ${isGroup()?`<span>Rabat grupowy</span><span>−15%</span>`:''}<span>Razem</span><span>${money(total())}</span><span>Płatność</span><span>${{card:'KARTA',blik:'BLIK',cash:'GOTÓWKA'}[S.payBy]}</span></div>
+ ${isGroup()?`<span>Rabat grupowy</span><span>−15%</span>`:''}<span>Razem</span><span>${money(total())}</span><span>Płatność</span><span>${{card:'KARTA',blik:'BLIK'}[S.payBy]}</span></div>
  <div class="sep"></div>${qrSVG('TM|'+S.no+'|'+S.zone+'|'+S.time+'|'+persons())}<div class="no">${S.no}</div>
  <div class="ft">Dopłata ${OVER} zł za każde rozpoczęte 15 min ponad czas.<br>Kasa ${MACHINE} · Avista</div></div>`}
-V.done=()=>{const ch=S.payBy==='cash'?r2(S.cashIn-total()):0;return `<div class="donev"><div class="okc"><span class="ok-ic">${ic('check')}</span><h1 class="h1" style="font-size:2.6rem">${t('doneT')}</h1><p class="sub" style="font-size:1.15rem">${t('doneS')}</p>
+V.done=()=>{const ch=0;return `<div class="donev"><div class="okc"><span class="ok-ic">${ic('check')}</span><h1 class="h1" style="font-size:2.6rem">${t('doneT')}</h1><p class="sub" style="font-size:1.15rem">${t('doneS')}</p>
  ${ch>0?`<span class="pill" style="background:#E9F7EF;color:var(--go-d);height:40px;font-size:1rem;align-self:flex-start">${t('change')}: ${money(ch)}</span>`:''}
  <div class="rules">${[['qr','r1'],['gate','r2'],['lock','r3'],['clock','over']].map(([i,k])=>`<div>${ic(i)}<span>${t(k)}</span></div>`).join('')}</div></div>${ticketHTML()}</div>`};
 function modalHTML(){const m=S.modal;if(!m)return'';
@@ -446,7 +443,6 @@ function act(a,v){switch(a){
  case 'blik':if(S.blik.length<6){S.blik+=v;render()}break;
  case 'blikDel':S.blik=S.blik.slice(0,-1);render();break;
  case 'blikOk':if(S.blik.length===6)paid('blik');break;
- case 'cash':{if(S.phase)break;const l=r2(total()-S.cashIn),n=[10,20,50,100,200].find(x=>x>=l)||200;S.cashIn=r2(S.cashIn+n);if(S.cashIn>=total())paid('cash');else render()}break;
  case 'again':{const l=S.lang;timers.forEach(clearTimeout);clearInterval(ab);S=fresh(l);go('zone')}break;
 }}
 $('#stage').addEventListener('click',e=>{const el=e.target.closest('[data-a]');if(!el||el.disabled)return;if(S.modal&&!el.closest('#modal'))return;if(S.phase==='wait')return;act(el.dataset.a,el.dataset.v)});
