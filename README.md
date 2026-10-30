@@ -29,3 +29,8 @@ Widok biletu w telefonie: `index.html#bilet`.
 - `fonts/` – czcionki Poppins i IBM Plex Mono (licencja SIL OFL)
 - `vendor/qrcode.js` – generator kodów QR (licencja MIT)
 - `uruchom.bat` – start w trybie kiosku
+
+## Drugie demo: kasa Term Maltańskich
+
+Prosta kasa biletowa (strefa → czas → osoby → płatność → bilet z kodem QR): `termy/index.html`.
+Ta wersja pobiera czcionki z internetu.
